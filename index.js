@@ -23,7 +23,7 @@ server.use(express.static(__dirname+"/public"));
 /** 解决跨域问题 **/
 server.use(cors({
   'credentials':true,
-  origin:"http://tianchengapi.applinzi.com"
+  'origin':"http://tianchengapi.applinzi.com"
 }))
 
 // 使用 session 中间件
