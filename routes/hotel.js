@@ -2,7 +2,7 @@ const express=require("express");
 const pool=require("../pool");
 
 const router=express.Router();
-
+//酒店
 router.get("/",(req,res)=>{
   var output = {};
   var sql = `SELECT hid,title,subtitle,pic1,pic,price FROM ly_hotel WHERE recommend=1 LIMIT 3;
@@ -26,7 +26,20 @@ router.get("/",(req,res)=>{
     res.send(output);
   })
 })
-
+//特卖会
+router.get("/sale",(req,res)=>{
+  var output = {};
+  var sql = `SELECT cid,title,img_url FROM ly_index_carousel WHERE condition1=2 LIMIT 4;
+             SELECT aid,title,subtitle,pic,price FROM ly_sale WHERE condition1=0;
+             SELECT aid,title,subtitle,pic,price FROM ly_sale WHERE condition1=1;`
+  pool.query(sql,(err,result)=>{
+    if(err) throw err
+    output.lbItems = result[0];
+    output.ppItems = result[1];
+    output.myList = result[2];
+    res.send(output);
+  })
+})
 
 /* 导出 */
 module.exports=router;

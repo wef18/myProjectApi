@@ -39,5 +39,5 @@ server.use(session({
 /** 使用路由器来管理路由 **/
 server.use("/index",index);
 server.use("/products",products);
-server.use("/hotel",hotel);
+server.use(hotel);
 server.use(user);
