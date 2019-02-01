@@ -33,7 +33,7 @@ router.post("/register",(req,res)=>{
     if(err) throw err;
     //判断是否添加成功
     if(result.affectedRows > 0){
-      pool.query("INSERT INTO ly_login VALUES(NULL,?,?)",[$uname,$upwd],(err,result)=>{
+      pool.query("INSERT INTO ly_login VALUES(NULL,?,PASSWORD(?)",[$uname,$upwd],(err,result)=>{
         if(err) throw err;
         res.send({code:200,msg:"register suc"});
       })
