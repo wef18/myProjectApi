@@ -1,4 +1,5 @@
 /** 引入第三方模块 **/
+const PORT = 5050; 
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
@@ -10,19 +11,19 @@ const hotel = require("./routes/hotel");
 const user = require("./routes/user");
 
 var server = express();
-server.listen();
-console.log("欢迎主人");
+server.listen(PORT, ()=>{
+  console.log('Server Listening: '+PORT);
+});
 server.use(bodyParser.urlencoded({
   extended:false
 }));
   //托管静态文件到public目录
-server.use(express.static(__dirname+"/../public"));
 server.use(express.static(__dirname+"/public"));
 
 /** 解决跨域问题 **/
 server.use(cors({
   'credentials':true,
-  origin:["https://weixiang.applinzi.com"],
+  origin:"http://tianchengapi.applinzi.com"
 }))
 
 // 使用 session 中间件
