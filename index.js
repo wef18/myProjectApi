@@ -18,7 +18,7 @@ server.use(bodyParser.urlencoded({
   extended:false
 }));
   //托管静态文件到public目录
-server.use(express.static(__dirname+"/public"));
+// server.use(express.static(__dirname+"/public"));
 
 /** 解决跨域问题 **/
 server.use(cors({

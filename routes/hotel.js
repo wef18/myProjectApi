@@ -3,7 +3,7 @@ const pool=require("../pool");
 
 const router=express.Router();
 //酒店
-router.get("/",(req,res)=>{
+router.get("/hotel",(req,res)=>{
   var output = {};
   var sql = `SELECT hid,title,subtitle,pic1,pic,price FROM ly_hotel WHERE recommend=1 LIMIT 3;
              SELECT hid,title,pic,price FROM ly_hotel WHERE family_id=2 LIMIT 3;
