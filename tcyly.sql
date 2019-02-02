@@ -10,7 +10,7 @@ USE ly;
 CREATE TABLE ly_user(
   uid      INT PRIMARY KEY AUTO_INCREMENT,   
   uname    VARCHAR(28) UNIQUE,    #用户名
-  upwd     VARCHAR(32),    #密码
+  upwd     VARCHAR(64),    #密码
   uemail   VARCHAR(36) UNIQUE,    #邮箱
   uphone   VARCHAR(16) UNIQUE,   #手机号
   ly_name  VARCHAR(16),     #用户真实姓名
@@ -26,7 +26,7 @@ INSERT INTO ly_user VALUES
 CREATE TABLE ly_login(
   id     INT PRIMARY KEY AUTO_INCREMENT,
   uname  VARCHAR(28),      #用户名
-  upwd   VARCHAR(32)      #密码
+  upwd   VARCHAR(64)      #密码
 );
 INSERT INTO ly_login VALUES
 (NULL,"taobao",PASSWORD("123456")),

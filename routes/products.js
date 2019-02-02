@@ -23,7 +23,16 @@ router.get("/",(req,res)=>{
     arr.push(` title like ? `);
   }
   var where = " WHERE " + arr.join(" and ");
-  var sql = "SELECT lid,img_url,title,subtitle,price,type1 FROM ly_products " + where;
+  if(num == 0){
+    // 默认排序
+    var sql = "SELECT lid,img_url,title,subtitle,price,type1 FROM ly_products " + where;
+  }else if(num == 1){
+    // 价格从高到低排序
+    var sql = "SELECT lid,img_url,title,subtitle,price,type1 FROM ly_products " + where + " ORDER BY price DESC";
+  }else if(num == 2){
+    // 价格从低到高排序
+    var sql = "SELECT lid,img_url,title,subtitle,price,type1 FROM ly_products " + where + " ORDER BY price ASC";
+  }
   pool.query(sql,kwords,(err,result)=>{
     if(err) throw err;
     var count = result.length;
@@ -35,7 +44,6 @@ router.get("/",(req,res)=>{
     res.send(output)
  });
 })
-
 
 
 
