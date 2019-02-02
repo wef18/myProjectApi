@@ -22,16 +22,6 @@ INSERT INTO ly_user VALUES
 (NULL,"taobao",PASSWORD("123456"),"taobao@qq.com","15012312589","淘宝","img/ee.jpg",now(),"1"),
 (NULL,"jingdong",PASSWORD("123456"),"jingdong@qq.com","15012312580","京东","img/ee.jpg",now(),"1"),
 (NULL,"didi",PASSWORD("123456"),"didi@qq.com","15012312581","滴滴","img/ee.jpg",now(),"0");
-/****创建用户登录表****/
-CREATE TABLE ly_login(
-  id     INT PRIMARY KEY AUTO_INCREMENT,
-  uname  VARCHAR(28),      #用户名
-  upwd   VARCHAR(64)      #密码
-);
-INSERT INTO ly_login VALUES
-(NULL,"taobao",PASSWORD("123456")),
-(NULL,"jingdong",PASSWORD("123456")),
-(NULL,"didi",PASSWORD("123456"));
 /****轮播图表****/
 CREATE TABLE ly_index_carousel(
   cid      INT PRIMARY KEY AUTO_INCREMENT,
