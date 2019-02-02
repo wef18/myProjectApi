@@ -104,7 +104,7 @@ router.post("/login",(req,res)=>{
     res.send({code:402,msg:"upwd required"});
     return;
   }
-  var sql = "SELECT id FROM ly_login WHERE uname=? AND upwd=PASSWORD(?) LIMIT 1";
+  var sql = "SELECT uid FROM ly_user WHERE uname=? AND upwd=PASSWORD(?) LIMIT 1";
   pool.query(sql,[$name,$pwd],(err,result)=>{
     if(err) throw err;
     if(result.length > 0){
@@ -122,6 +122,12 @@ router.get('/logout',(req,res)=>{
   req.session.destroy();
   res.send({code:200,msg:'logout succ'});
 });
+
+
+//返回当前用户的登陆信息
+router.get("/sessiondata",(req,res)=>{
+  res.send({uid:req.session.loginUid,uname:req.session.loginUname})
+})
 
 
 
