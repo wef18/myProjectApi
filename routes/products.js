@@ -5,6 +5,7 @@ const router=express.Router();
 
 router.get("/",(req,res)=>{
   var kwords = decodeURIComponent(req.query.kwords);
+  var num = req.query.num
   var output = {
     pno: 0,
     pageSize: 15,
@@ -44,9 +45,6 @@ router.get("/",(req,res)=>{
     res.send(output)
  });
 })
-
-
-
 
 
 /* 导出 */

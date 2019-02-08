@@ -7,8 +7,8 @@ const router=express.Router();
 //用户注册
 router.post("/register",(req,res)=>{
   //获取post请求的数据
-  var data = req.body;
-  var $uname = data.uname, $upwd = data.upwd, $phone = data.uphone, $email = data.uemail;
+  var obj = req.body;
+  var $uname = obj.uname, $upwd = obj.upwd, $phone = obj.uphone, $email = obj.uemail;
   //判断用户名、密码、手机号、邮箱是否为空
   if(!$uname){
     res.send({code:401,msg:"name required"});
@@ -33,7 +33,6 @@ router.post("/register",(req,res)=>{
     if(err) throw err;
     //判断是否添加成功
     if(result.affectedRows > 0){
-      if(err) throw err;
       res.send({code:200,msg:"register suc"});
     }
   })
@@ -123,14 +122,10 @@ router.get('/logout',(req,res)=>{
   res.send({code:200,msg:'logout succ'});
 });
 
-
 //返回当前用户的登陆信息
 router.get("/sessiondata",(req,res)=>{
   res.send({uid:req.session.loginUid,uname:req.session.loginUname})
 })
-
-
-
 
 /* 导出 */
 module.exports=router;
