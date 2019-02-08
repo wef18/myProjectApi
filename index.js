@@ -23,7 +23,7 @@ server.use(bodyParser.urlencoded({
 /** 解决跨域问题 **/
 server.use(cors({
   'credentials':true,
-  'origin':"http://tiancheng.applinzi.com"
+  'origin':"http://tianchengly.applinzi.com"
 }))
 
 // 使用 session 中间件
